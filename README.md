@@ -1,6 +1,7 @@
-# AST Application  R&D
+# https://adventofcode.com/2020
 # J. French
-# 28/11/20
+# Dec 2020
 
 # Specification
-A collection of small proof of concept applications, required for the main app
+A series of Python challanges for December 2020 by Eric Wastl
+
