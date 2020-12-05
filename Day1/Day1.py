@@ -1,20 +1,21 @@
-data = [1721,
-979,
-366,
-299,
-675,
-1456]
+import numpy as np
+from itertools import combinations
+
 
 def readData(fName):
-    rtn = []
     with open(fName, 'r') as reader:
-        for each in reader:
-            rtn.append(int(each.strip()))
-    return rtn
+        data = reader.read().replace('\n',',').split(",")
+    values = np.array(data).astype(int)
+    return values
 
 data = readData('input.txt')
 
-# part1
+# part1 - Pythonic solution, uses vectorization
+candidates = 2020 - data
+values = list(set(candidates).intersection(data))
+print(np.prod(values))
+
+# part1 - naive solution, uses loops
 running = True
 while running:
     for i in data:
@@ -30,7 +31,20 @@ while running:
                 break
 print(product)
 
-# part2
+# part2 - Pythonic solution, uses vectorization
+print(np.prod([p for p in combinations(data, 3) if sum(p) == 2020]))
+
+combo = [p for p in combinations(data, 3)]
+for eachCombo in combo:
+    if sum(eachCombo) == 2020:
+        break
+print(eachCombo, np.prod(eachCombo))
+
+
+
+
+
+# part2 - naive solution, uses loops
 running = True
 while running:
     for i in data:
